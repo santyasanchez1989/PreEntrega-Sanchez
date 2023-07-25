@@ -9,8 +9,8 @@ while (afirmacion !== "no") {
   } else {
     alert(nombre + ", a continuación podrá ingresar los datos para calcular.");
 
-    let ladoA = parseFloat(prompt("Ingresa la distancia del lado A, en mts."));
-    let ladoB = parseFloat(prompt("Ingresa la distancia del lado B, en mts"));
+    let ladoA = parseFloat(prompt("Ingresa la distancia del lado A, en mts.(si desea usar decimales usar .) "));
+    let ladoB = parseFloat(prompt("Ingresa la distancia del lado B, en mts.(si desea usar decimales usar .)"));
 
     function calcularMetros() {
       let resultado = ladoA * ladoB;
