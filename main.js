@@ -1,23 +1,37 @@
-let nombre = prompt("Ingrese su nombre");
-let afirmacion;
+const lado1Input = document.getElementById('lado1');
+const lado2Input = document.getElementById('lado2');
+const calcularSuperficieButton = document.getElementById('calcularSuperficie');
+const resultadoOutput = document.getElementById('resultado');
+const historialList = document.getElementById('historial');
 
-while (afirmacion !== "no") {
-  afirmacion = prompt("Si quiere calcular los metros cuadrados escriba 'si', de lo contrario escriba 'no'.");
+const superficiesArray = [];
 
-  if (afirmacion === "no") {
-    alert("Gracias " + nombre + ". Hasta pronto.");
+
+function calcularSuperficieRectangulo(lado1, lado2) {
+  const superficie = lado1 * lado2;
+  return superficie;
+}
+
+calcularSuperficieButton.addEventListener('click', function () {
+  const lado1 = parseFloat(lado1Input.value);
+  const lado2 = parseFloat(lado2Input.value);
+
+  if (isNaN(lado1) || isNaN(lado2)) {
+      resultadoOutput.textContent = "Por favor, ingresa valores numéricos válidos para ambos lados.";
   } else {
-    alert(nombre + ", a continuación podrá ingresar los datos para calcular.");
+      const superficieRectangulo = calcularSuperficieRectangulo(lado1, lado2);
+      resultadoOutput.textContent = `La superficie del rectángulo es: ${superficieRectangulo.toFixed(2)} mts2`;
+      
+      superficiesArray.push(superficieRectangulo);
+      actualizarHistorial();
+  }
+});
 
-    let ladoA = parseFloat(prompt("Ingresa la distancia del lado A, en mts.(si desea usar decimales usar .) "));
-    let ladoB = parseFloat(prompt("Ingresa la distancia del lado B, en mts.(si desea usar decimales usar .)"));
-
-    function calcularMetros() {
-      let resultado = ladoA * ladoB;
-      return resultado;
-    }
-
-    let areaCalculada = calcularMetros();
-    alert(`El área calculada es de: ${areaCalculada} metros cuadrados.`);
+function actualizarHistorial() {
+  historialList.innerHTML = '';
+  for (const superficie of superficiesArray) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `Superficie en mts2: ${superficie.toFixed(2)}`;
+      historialList.appendChild(listItem);
   }
 }
