@@ -2,7 +2,7 @@ const lado1Input = document.getElementById('lado1');
 const lado2Input = document.getElementById('lado2');
 const calcularSuperficieButton = document.getElementById('calcularSuperficie');
 const resultadoOutput = document.getElementById('resultado');
-const historialList = document.getElementById('historial');
+const historialLista = document.getElementById('historial');
 
 const superficiesArray = [];
 
@@ -28,10 +28,10 @@ calcularSuperficieButton.addEventListener('click', function () {
 });
 
 function actualizarHistorial() {
-  historialList.innerHTML = '';
+  historialLista.innerHTML = '';
   for (const superficie of superficiesArray) {
-      const listItem = document.createElement('li');
-      listItem.textContent = `Superficie en mts2: ${superficie.toFixed(2)}`;
-      historialList.appendChild(listItem);
+      const listaItem = document.createElement('li');
+      listaItem.textContent = `Superficie en mts2: ${superficie.toFixed(2)}`;
+      historialLista.appendChild(listaItem);
   }
 }
