@@ -29,12 +29,13 @@ botonEnviar.addEventListener('click', () => {
 function validarHorario(fechaHora) {
   const fechaSeleccionada = new Date(fechaHora);
   const diaSemana = fechaSeleccionada.getDay();
-
+  const hora = fechaSeleccionada.getHours();
+  
 
   if (diaSemana >= 1 && diaSemana <= 6) { 
-    
+    if ((hora >= 9 && hora < 13) || (hora <= 14 && hora < 17)){
     return true;
-    } else 
+    } else {
    return false;
 }
 
