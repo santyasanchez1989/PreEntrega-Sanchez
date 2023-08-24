@@ -6,15 +6,17 @@
     <title>Segunda Pre-Entrega</title>
 </head>
 <body>
-    <h1>Turnero de Tienda de Mascotas</h1>
-  <div id="app">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre">
-    <label for="fechahora">Fecha y Hora:</label>
-    <input type="fechahora-local" id="fehcahora">
-    <button id="submit">Reservar Turno</button>
-    <div id="citas"></div>
-  </div>
+    <h1>Reservar un turno, para la veterinaria.</h1>
+    <div id="app">
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres">
+        <label for="nombreMascota">Nombre de la Mascota:</label>
+        <input type="text" id="nombreMascota">
+        <label for="fechaHora">Fecha y Hora:</label>
+        <input type="datetime-local" id="fechaHora">
+        <button id="enviar">Reservar Cita</button>
+        <div id="citas"></div>
+      </div>
 
     <script src="./main.js"></script>
 </body>
