@@ -12,15 +12,31 @@ botonEnviar.addEventListener('click', () => {
   const fechaHora = inputFechaHora.value;
 
   if (nombres && nombreMascota && fechaHora) {
-    const cita = { nombres, nombreMascota, fechaHora };
-    citas.push(cita);
-    actualizarHorario();
-    guardarCitasEnLocalStorage();
-    inputNombres.value = '';
-    inputNombreMascota.value = '';
-    inputFechaHora.value = '';
+    if (validarHorario(fechaHora)) {
+      const cita = { nombres, nombreMascota, fechaHora };
+      citas.push(cita);
+      actualizarHorario();
+      guardarCitasEnLocalStorage();
+      inputNombres.value = '';
+      inputNombreMascota.value = '';
+      inputFechaHora.value = '';
+    } else {
+      alert('El horario seleccionado no está disponible.');
+    }
   }
 });
+
+function validarHorario(fechaHora) {
+  const fechaSeleccionada = new Date(fechaHora);
+  const diaSemana = fechaSeleccionada.getDay();
+
+
+  if (diaSemana >= 1 && diaSemana <= 6) { 
+    
+    return true;
+    } else 
+   return false;
+}
 
 function actualizarHorario() {
   contenedorCitas.innerHTML = '<h2>Horario de Citas</h2>';
