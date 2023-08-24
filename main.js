@@ -1,5 +1,6 @@
 const botonEnviar = document.getElementById('enviar');
 const inputNombres = document.getElementById('nombres');
+const inputNombreMascota = document.getElementById('nombreMascota');
 const inputFechaHora = document.getElementById('fechaHora');
 const contenedorCitas = document.getElementById('citas');
 
@@ -7,14 +8,16 @@ let citas = [];
 
 botonEnviar.addEventListener('click', () => {
   const nombres = inputNombres.value;
+  const nombreMascota = inputNombreMascota.value;
   const fechaHora = inputFechaHora.value;
 
-  if (nombres && fechaHora) {
-    const cita = { nombres, fechaHora };
+  if (nombres && nombreMascota && fechaHora) {
+    const cita = { nombres, nombreMascota, fechaHora };
     citas.push(cita);
     actualizarHorario();
     guardarCitasEnLocalStorage();
     inputNombres.value = '';
+    inputNombreMascota.value = '';
     inputFechaHora.value = '';
   }
 });
@@ -25,10 +28,10 @@ function actualizarHorario() {
     contenedorCitas.innerHTML += '<p>No hay citas programadas</p>';
   } else {
     citas.forEach((cita, index) => {
-      const { nombres, fechaHora } = cita;
+      const { nombres, nombreMascota, fechaHora } = cita;
       contenedorCitas.innerHTML += `
         <div class="cita">
-          <p>${nombres} - ${fechaHora}</p>
+          <p>${nombres} - ${nombreMascota} - ${fechaHora}</p>
           <button onclick="cancelarCita(${index})">Cancelar</button>
         </div>`;
     });
