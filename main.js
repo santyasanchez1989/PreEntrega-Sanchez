@@ -30,15 +30,15 @@ function validarHorario(fechaHora) {
   const fechaSeleccionada = new Date(fechaHora);
   const diaSemana = fechaSeleccionada.getDay();
   const hora = fechaSeleccionada.getHours();
-  
+  const minutos = fechaSeleccionada.getMinutes();
 
   if (diaSemana >= 1 && diaSemana <= 6) { 
-    if ((hora >= 9 && hora < 13) || (hora <= 14 && hora < 17)){
-    return true;
-    } else {
-   return false;
+    if ((hora >= 9 && hora < 13) || (hora >= 14 && hora < 17 && minutos < 30)) {
+      return true;
+    }
+  }
+  return false;
 }
-
 function actualizarHorario() {
   contenedorCitas.innerHTML = '<h2>Horario de Citas</h2>';
   if (citas.length === 0) {
